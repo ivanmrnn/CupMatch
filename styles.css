@@ -1,0 +1,302 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+    --black: #333;
+    --blue: #55679C;
+    --red: #F03161;
+    --gray: #Fdfdfd;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Poppins, sans-serif;
+    color: var(--black);
+    background: var(--gray);
+    font-size: 14px;
+}
+
+/* Display */
+
+.flex{
+    display: flex;
+} 
+
+.wrap {
+    flex-wrap: wrap;
+}
+
+.column {
+    flex-direction: column;
+}
+
+.justify-center{
+    justify-content: center;
+}
+
+.space-between{
+    justify-content: space-between;
+}
+
+.align-center{
+    align-items: center;
+} 
+
+/* Text */
+
+h1, .text-large {
+    font-size: 22px;
+}
+
+.text-medium {
+    font-size: 18px;
+}
+
+.text-small {
+    font-size: 14px;
+}
+
+
+.bold {
+    font-weight: bold;
+}
+
+.justify {
+    text-align: justify;
+}
+
+.medium {
+    font-weight: 500;
+}
+
+.capitalize {
+    text-transform: capitalize;
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+/* Gap */
+
+.huge-gap {
+    gap: 4rem;
+}
+
+.big-gap {
+    gap: 2rem;
+}
+
+.gap {
+    gap: 1rem;
+}
+
+.small-gap {
+    gap: 8px;
+}
+
+/* Radius */
+
+.radius {
+    border-radius: 16px;
+}
+
+.small-radius {
+    border-radius: 8px;
+}
+
+/* Button, a, input, select */
+
+button, a {
+    all: unset;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+input {
+    text-align: start;
+    font-size: 16px;
+}
+
+textarea {
+    font-size: 16px;
+    min-height: 120px;
+    font-family: Poppins;
+}
+
+.input-box {
+    font-size: 16px;
+    justify-content: space-between;
+    border-collapse: collapse;
+    align-items: center;
+    border: 1px solid var(--black);
+    border-radius: 8px;
+    flex-grow: 1;
+    padding: 12px 1rem; 
+}
+
+select {
+    border-radius: 8px;
+    text-transform: capitalize;
+}
+
+/* Cursor */
+
+.pointer {
+    cursor: pointer;
+}
+
+/* Others */
+
+.basic-shadow {
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.basic-button {
+    padding: 8px 1rem;
+    border: 1px solid var(--blue);
+    transition: all 0.3s ease;
+}
+
+.basic-button:hover {
+    box-shadow: 2px 2px 0px 1px var(--blue); 
+    transform: translate(-2px, -2px); 
+} 
+
+.basic-button:active {
+    box-shadow:  var(--blue); 
+    transform: translate(2px, 2px); 
+} 
+
+.blue-button {
+    padding: 8px 1rem;
+    background: var(--blue);
+    color: white;
+    border: 1px solid var(--black);
+    transition: all 0.3s ease;
+}
+
+.red-button {
+    padding: 8px 1rem;
+    background: var(--red);
+    color: white;
+    border: 1px solid var(--black);
+    transition: all 0.3s ease;
+}
+
+.blue-button:hover, .red-button:hover {
+    box-shadow: 2px 2px 0px 1px var(--black); 
+    transform: translate(-2px, -2px); 
+} 
+
+.blue-button:active, .red-button:active {
+    box-shadow:  var(--black); 
+    transform: translate(2px, 2px); 
+} 
+
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    border: 0;
+}
+
+.hide {
+    visibility: hidden;
+}
+
+.remove {
+    display: none;
+}
+
+.display-table-cell {
+    display: table-cell;
+}
+
+/* Modal */
+
+.modal {
+    position: fixed;
+    z-index: 10;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.4);
+    
+}
+
+.modal-content {
+    position: relative;
+    background-color: #fff;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid var(--black);
+    
+    border-radius: 10px;
+}
+
+.modal-title, .modal-subtitle{
+    color: var(--blue);
+}
+
+/* Game */
+
+.item {
+    width: 40px;
+    height: 60px;
+    border: 1px solid var(--black);
+    margin: 0 5px;
+    border-radius: 0 0 20px 20px; 
+    cursor: pointer; 
+}
+
+.given-items-container,
+.hidden-items-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.item-box {
+    width: 50px;
+    height: 70px;
+    border: 1px solid var(--blue);
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.item {
+    width: 40px;
+    height: 60px;
+    border-radius: 0 0 20px 20px;
+    cursor: grab;
+}
+
+.item:active {
+    cursor: grabbing;
+}
+
+.item-box.drag-over {
+    background-color: rgba(85, 103, 156, 0.2);
+}
+
+.dragging {
+    opacity: 0.5;
+}
+
+.items-box-active {
+    background: var(--blue);
+    color: white;
+}
