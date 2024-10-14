@@ -6,13 +6,7 @@
     <meta name="description" content="Item Order Guessing Game">
     <title>Free Cup Matching Game - CupMatch</title>
     <link href="styles.css" rel="stylesheet">
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PSPZHVKY5N"></script>
-    <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'G-PSPZHVKY5N');
+    <meta name="google-site-verification" content="j777oH4fnfP4LoQhbuJpllmSTN2NhqF51sLOg7P_lLE" />
     </script>
 </head>
 
@@ -37,11 +31,11 @@
     </header>
 
     <!-- Main -->
-    <main style="width: 100% ; height: 100%; padding: 1rem;">
+    <main>
         <div class="flex justify-center align-center column gap" style="height: 100%;">
 
             <!-- Introduction -->
-            <section class="introduction-container flex align-center column big-gap" style="max-width: 728px;text-align: justify;margin-bottom: 90px;">
+            <section class="introduction-container flex align-center column big-gap">
                 <div class="flex column gap">
                     <p>
                         <span class="bold">CupMatch </span> is a memory game where players guess the correct order of hidden items. Get feedback on how many are in the right place and keep trying until the sequence is solved. Add more items for a greater challenge.
@@ -69,13 +63,13 @@
                 </div>
             </section>
 
-            <section class="game-container flex justify-center align-center column huge-gap remove" style="height: 100%; text-align: justify;margin-bottom: 90px;padding: 1rem;">
+            <section class="game-container flex justify-center align-center column huge-gap remove">
                 <div class="flex align-center space-between small-gap" style="width: 100%;">
                     <button class="items-box-button basic-button small-radius pointer">
                         Items Box
                         <span class="items-box-checkmark hide">✔</span>
                     </button>
-                    <span style="font-size: 12px;text-wrap: wrap;">Drag the items to each other then check</span>
+                    <span class="instructions" style="font-size: 12px;text-wrap: wrap;text-align: center;">Drag or click the items to swap each other then check</span>
                     <button class="give-up-button red-button small-radius pointer">Give Up</button>
                 </div>
 
@@ -86,14 +80,14 @@
 
                 <div class="game-actions flex align-center huge-gap">
                     <strong style="color: var(--blue);"><span class="total-checks-made" >0</span> Checks Made</strong>
-                    <button class="check-items-button blue-button small-radius pointer" style="padding: 16px 32px;"><strong>Check</strong></button>
+                    <button class="check-items-button blue-button small-radius pointer" ><strong>Check</strong></button>
                     <button class="play-again-button blue-button small-radius pointer remove" style="padding: 16px 32px;">Play Again</button>
                     <strong class="guess-container hide" style="color: var(--blue);"><span class="total-correct-guess">0</span>/<span class="total-items">0</span> is correct</strong>
                 </div>
             </section>
 
             <div class="status-modal modal remove">
-                <div class="modal-content flex align-center column big-gap" style="width: 320px;">
+                <div class="modal-content flex align-center column big-gap">
                     <div class="win-message modal-title text-large remove"><strong>You won!</strong></div>
                     <div class="lose-message modal-title text-large remove"><strong>You lost!</strong></div>
                     
@@ -102,7 +96,7 @@
 
                     <p>Points: <span class="game-points"></span></p>
 
-                    <div class="flex align-center column gap" style="margin-top: 1rem;">
+                    <div class="modal-actions flex align-center column gap" style="margin-top: 1rem;">
                         <strong style="color: var(--blue);">Number of Items</strong>
                         <div class="flex align-center gap">
                             <button class="modal-item-decrease-button basic-button small-radius pointer" style="padding: 6px 12px;">−</button>

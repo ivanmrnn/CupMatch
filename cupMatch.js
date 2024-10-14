@@ -10,6 +10,7 @@ const totalChecksMade = document.querySelector('.total-checks-made');
 let playerItems = [];
 let hiddenItems = [];
 let checkCount = 0;
+let selectedItem = null;
 
 // Predefined colors
 const itemColors = [
@@ -88,6 +89,44 @@ const setupDragAndDrop = () => {
     });
 };
 
+const setupItemInteractions = () => {
+    const items = document.querySelectorAll('.item');
+    items.forEach(item => {
+        item.addEventListener('click', handleItemClick);
+        item.addEventListener('dragstart', dragStart);
+        item.addEventListener('dragend', dragEnd);
+    });
+
+    const boxes = document.querySelectorAll('.item-box');
+    boxes.forEach(box => {
+        box.addEventListener('dragover', dragOver);
+        box.addEventListener('dragenter', dragEnter);
+        box.addEventListener('dragleave', dragLeave);
+        box.addEventListener('drop', drop);
+    });
+};
+
+const handleItemClick = function() {
+    if (selectedItem === null) {
+        // First click - select the item
+        this.classList.add('selected');
+        selectedItem = this;
+    } else {
+        // Second click - swap items
+        const fromIndex = parseInt(selectedItem.getAttribute('data-index'));
+        const toIndex = parseInt(this.getAttribute('data-index'));
+
+        // Swap items in the playerItems array
+        [playerItems[fromIndex], playerItems[toIndex]] = [playerItems[toIndex], playerItems[fromIndex]];
+
+        // Deselect the item
+        selectedItem.classList.remove('selected');
+        selectedItem = null;
+
+        renderItems();
+    }
+};
+
 const updateItemBoxVisibility = () => {
     const itemBoxes = document.querySelectorAll('.item-box');
     itemBoxes.forEach((box) => {
@@ -116,7 +155,8 @@ const renderItems = () => {
 
     givenItemsContainer.appendChild(givenFragment);
     hiddenItemsContainer.appendChild(hiddenFragment);
-
+    
+    setupItemInteractions();
     setupDragAndDrop();
     updateItemBoxVisibility();
 };
@@ -139,11 +179,11 @@ const enableGameInteractions = () => {
         item.setAttribute('draggable', true);
         item.addEventListener('dragstart', dragStart);
         item.addEventListener('dragend', dragEnd);
+        item.addEventListener('click', handleItemClick);
     });
 
     document.querySelector('.check-items-button').classList.remove('remove');
     document.querySelector('.play-again-button').classList.add('remove');
-
 };
 
 const freezeBoard = () => {
@@ -152,11 +192,11 @@ const freezeBoard = () => {
         item.setAttribute('draggable', false);
         item.removeEventListener('dragstart', dragStart);
         item.removeEventListener('dragend', dragEnd);
+        item.removeEventListener('click', handleItemClick);
     });
 
     document.querySelector('.check-items-button').classList.add('remove');
     document.querySelector('.play-again-button').classList.remove('remove');
-
 };
 
 const arraysAreEqual = (arr1, arr2) => {
@@ -241,18 +281,23 @@ const calculatePoints = (itemCount, checkCount, isWin) => {
     if (!isWin) return 0; // Award 0 points if the player gave up
 
     // Base points for completing the game
-    let basePoints = itemCount * 10;
+    let basePoints = itemCount * 20;
     
-    // Penalty for each check
-    let penalty = checkCount * 5;
+    // Calculate the expected number of checks
+    let expectedChecks = itemCount * 2;
     
-    // Bonus for completing with fewer checks
-    let bonus = Math.max(0, (itemCount * 2 - checkCount) * 10);
+    // Calculate the difference between expected and actual checks
+    let checkDifference = checkCount - expectedChecks;
     
-    // Calculate total points (minimum 0)
-    return Math.max(0, basePoints + bonus - penalty);
+    // Penalty for excess checks (5 points per excess check)
+    let penalty = Math.max(0, checkDifference * 5);
+    
+    // Bonus for fewer checks than expected (10 points per check under expected)
+    let bonus = checkDifference < 0 ? Math.abs(checkDifference) * 10 : 0;
+    
+    // Calculate total points (minimum 10)
+    return Math.max(10, basePoints + bonus - penalty);
 };
-
 const updateStatusMessage = (isWin) => {
     statusModal.classList.remove('remove');
     document.querySelector(isWin ? '.win-message' : '.lose-message').classList.remove('remove');
@@ -314,6 +359,7 @@ const actions = {
     'items-box-button': toggleItemsBox,
     'play-again-button': () => {
         statusModal.classList.add('remove');
+        guessContainer.classList.add('hide');
         playAgain();
     },
     'modal-item-decrease-button': () => modalAdjustQuantity(-1),
