@@ -340,6 +340,11 @@ main {
     padding: 16px 32px;
 }
 
+.mobile-instructions {
+    font-size: 8px;
+    display: none;
+}
+
 @media (max-width: 728px) {
     .item {
         height: 40px;
@@ -448,6 +453,10 @@ main {
     .game-actions {
         gap: 2rem;
     }
+
+    .mobile-instructions {
+        display: block;
+    }
 }
 
 @media (max-width: 480px) {
@@ -458,6 +467,14 @@ main {
 
     .game-actions {
         gap: 8px;
+    }
+
+    main {
+        padding: 8px;
+    }
+
+    .game-container {
+        padding: 8px;
     }
 }
 
@@ -477,5 +494,12 @@ main {
 
     .game-container {
         padding: 8px;
+    }
+}
+
+@media (max-width: 350px) {
+
+    .instructions {
+        width: 80px;
     }
 }
