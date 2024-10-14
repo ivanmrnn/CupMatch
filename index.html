@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Item Order Guessing Game">
-    <title>Free Item Matching Game</title>
+    <title>Free Cup Matching Game - CupMatch</title>
     <link href="styles.css" rel="stylesheet">
 </head>
 
@@ -12,17 +12,19 @@
 
     <!-- Header -->
     <header class="flex space-between align-center capitalize" style="width: 100%;background: var(--blue);color: white;padding: 8px 16px;">
-        <h1>ItemMatch</h1>
-        <div class="flex huge-gap">
+        <h1>CupMatch</h1>
+        <div class="header-actions flex huge-gap">
             <a href="https://ivanmaranan.pages.dev/" target="_blank" rel="noopener noreferrer">
                 <button class="flex align-center small-gap pointer">
                     <strong>Other Projects</strong>
                 </button>
             </a>
             
-            <button class="flex align-center small-gap pointer">
-                <strong>Donate</strong>
-            </button>
+            <a href="https://paypal.me/ivanmrnn" target="_blank" rel="noopener noreferrer">
+                <button class="flex align-center small-gap pointer">
+                    <strong>Donate</strong>
+                </button>
+            </a>
         </div>
     </header>
 
@@ -34,45 +36,47 @@
             <section class="introduction-container flex align-center column big-gap" style="max-width: 728px;text-align: justify;margin-bottom: 90px;">
                 <div class="flex column gap">
                     <p>
-                        <span class="bold">ItemMatch </span> is a memory game where players guess the correct order of hidden items. Get feedback on how many are in the right place and keep trying until the sequence is solved. Add more items for a greater challenge.
+                        <span class="bold">CupMatch </span> is a memory game where players guess the correct order of hidden items. Get feedback on how many are in the right place and keep trying until the sequence is solved. Add more items for a greater challenge.
                     </p>
     
                     <p >
-                        This website is designed, and developed by Frederic Ivan Maranan. Know more about me and my other projects at <a href="https://ivanmaranan.pages.dev/" target="_blank" rel="noopener noreferrer"><u class="pointer" style="color: var(--blue)">ivanmaranan.pages.dev</u></a>.  Know more about ItemMatch by checking its <a href="https://ivanmaranan.pages.dev/" target="_blank" rel="noopener noreferrer"><u class="pointer" style="color: var(--blue)">Github Repository</u></a>.
+                        This website is designed, and developed by Frederic Ivan Maranan. Know more about me and my other projects at <a href="https://ivanmaranan.pages.dev/" target="_blank" rel="noopener noreferrer"><u class="pointer" style="color: var(--blue)">ivanmaranan.pages.dev</u></a>.  Know more about CupMatch by checking its <a href="https://github.com/ivanmrnn/CupMatch" target="_blank" rel="noopener noreferrer"><u class="pointer" style="color: var(--blue)">Github Repository</u></a>.
                     </p>
                     
                     <p>
-                        Support me by donating to <u class="pointer" style="color: var(--blue)">my Paypal</u>. It can help me afford a domain for this website (it costs $10) and create more free software applications that you can use.
+                        Support me by donating to 
+                        <u class="pointer" style="color: var(--blue)"><a href="https://paypal.me/ivanmrnn" target="_blank" rel="noopener noreferrer">my Paypal</a></u>. 
+                        It can help me afford a domain for this website (a domain (.com) usually costs $10) and create more free software applications that you can use.
                     </p>
                 </div>
                 
                 <div class="flex align-center column gap">
                     <strong style="color: var(--blue);">Number of Items</strong>
                     <div class="flex align-center gap">
-                        <button class="home-item-decrease-button basic-button small-radius pointer" style="padding: 6px 12px;">−</button>
+                        <button class="home-item-decrease-button basic-button small-radius pointer" style="padding: 6px 12px;" aria-label="Decrease item quantity">−</button>
                         <span class="text-large home-item-quantity">3</span>
-                        <button class="home-item-increase-button basic-button small-radius pointer"  style="padding: 6px 12px;">+</button>
+                        <button class="home-item-increase-button basic-button small-radius pointer"  style="padding: 6px 12px;" aria-label="Increase item quantity">+</button>
                     </div>
                     <button class="play-game-button blue-button small-radius pointer" style="padding: 16px 32px;"><strong>Play Game</strong></button>
                 </div>
-                
             </section>
 
-            <section class="game-container flex justify-center align-center column huge-gap remove" style="width: 728px;height: 100%; text-align: justify;margin-bottom: 90px;padding: 1rem;">
-                <div class="flex space-between" style="width: 100%;">
+            <section class="game-container flex justify-center align-center column huge-gap remove" style="height: 100%; text-align: justify;margin-bottom: 90px;padding: 1rem;">
+                <div class="flex align-center space-between small-gap" style="width: 100%;">
                     <button class="items-box-button basic-button small-radius pointer">
                         Items Box
                         <span class="items-box-checkmark hide">✔</span>
                     </button>
+                    <span style="font-size: 12px;text-wrap: wrap;">Drag the items to each other then check</span>
                     <button class="give-up-button red-button small-radius pointer">Give Up</button>
                 </div>
+
                 <div class="game-board flex align-center column big-gap">
-                    
                     <div class="given-items-container flex small-gap"></div>
-                    <div class="hidden-items-container flex small-gap" style="padding: 2rem;background: var(--blue);"></div>
+                    <div class="hidden-items-container flex small-gap" style="background: var(--blue);"></div>
                 </div>
 
-                <div class="flex align-center huge-gap">
+                <div class="game-actions flex align-center huge-gap">
                     <strong style="color: var(--blue);"><span class="total-checks-made" >0</span> Checks Made</strong>
                     <button class="check-items-button blue-button small-radius pointer" style="padding: 16px 32px;"><strong>Check</strong></button>
                     <button class="play-again-button blue-button small-radius pointer remove" style="padding: 16px 32px;">Play Again</button>
@@ -85,7 +89,10 @@
                     <div class="win-message modal-title text-large remove"><strong>You won!</strong></div>
                     <div class="lose-message modal-title text-large remove"><strong>You lost!</strong></div>
                     
-                    <p>Number of checks: <span class="checkCount"></span></p>
+                    <p>Number of items: <span class="item-count"></span></p>
+                    <p>Number of checks: <span class="check-count"></span></p>
+
+                    <p>Points: <span class="game-points"></span></p>
 
                     <div class="flex align-center column gap" style="margin-top: 1rem;">
                         <strong style="color: var(--blue);">Number of Items</strong>
@@ -97,20 +104,19 @@
                         <button class="play-again-button blue-button small-radius pointer">Play Again</button>
                         <button class="spectate-button blue-button small-radius pointer">Spectate Game</button>
                     </div>
-                    
                 </div>
             </div>
 
-            <!-- Leeaderboard Advertisement -->
+            <!-- Leaderboard Advertisement
             <aside style="position: fixed; bottom: 0;width: 100%;border: 1px solid black;height: 90px;" class="flex justify-center" aria-label="Sticky Advertisement">
                 <div style="width: 728px;border: 1px solid black;height: 100%;"></div>
             </aside>
 
-            <!-- Skyscraper Left Advertisement -->
+            Skyscraper Left Advertisement
             <aside style="position: fixed; left: 0;width: 120px;border: 1px solid black;height: 600px;" aria-label="Sticky Advertisement"></aside>
 
-            <!-- Skyscraper Right Advertisement-->
-            <aside style="position: fixed; right: 0;width: 120px;border: 1px solid black;height: 600px;" aria-label="Sticky Advertisement"></aside>
+            Skyscraper Right Advertisement
+            <aside style="position: fixed; right: 0;width: 120px;border: 1px solid black;height: 600px;" aria-label="Sticky Advertisement"></aside> -->
 
         </div>
     </main>
@@ -122,6 +128,7 @@
         const gameContainer = document.querySelector('.game-container');
         const statusModal = document.querySelector('.status-modal');
         const homeItemQuantity = document.querySelector('.home-item-quantity');
+        const modalItemQuantity = document.querySelector('.modal-item-quantity');
     
         // Set initial quantity
         homeItemQuantity.textContent = 3;
@@ -135,356 +142,8 @@
             let value = parseInt(modalItemQuantity.textContent) + valueChange;
             modalItemQuantity.textContent = Math.max(3, Math.min(10, value)); // Ensure a minimum of 3 and maximum of 10 items
         };
-
-
-        // Game Script
-    
-        // Item rendering logic
-        const givenItemsContainer = document.querySelector('.given-items-container');
-        const hiddenItemsContainer = document.querySelector('.hidden-items-container');
-        const totalCorrectGuess = document.querySelector('.total-correct-guess');
-        const totalItems = document.querySelector('.total-items');
-        const guessContainer = document.querySelector('.guess-container');
-        const totalChecksMade = document.querySelector('.total-checks-made');
-
-        let playerItems = [];
-        let hiddenItems = [];
-        let checkCount = 0;
-
-        // Predefined colors
-        const itemColors = [
-            '#FF0000', '#00FF00', '#0000FF', '#FFFF00', '#00FFFF',
-            '#FF00FF', '#808080', '#000000', '#FFA500', '#E9967A'
-        ];
-
-        const generateRandomColors = (length) => {
-            const colors = [];
-            while (colors.length < length) {
-                const randomIndex = Math.floor(Math.random() * itemColors.length);
-                const color = itemColors[randomIndex];
-                if (!colors.includes(color)) {
-                    colors.push(color);
-                }
-            }
-            return colors;
-        };
-
-        const createItem = (color, index) => {
-            const item = document.createElement('div');
-            item.classList.add('item');
-            item.style.backgroundColor = color;
-            item.setAttribute('draggable', true);
-            item.setAttribute('data-index', index);
-            return item;
-        };
-
-        const createItemBox = (index) => {
-            const box = document.createElement('div');
-            box.classList.add('item-box');
-            box.setAttribute('data-index', index);
-            return box;
-        };
-
-        function dragStart() {
-            this.classList.add('dragging');
-        }
-
-        function dragEnd() {
-            this.classList.remove('dragging');
-        }
-
-        function dragOver(e) {
-            e.preventDefault();
-        }
-
-        function dragEnter(e) {
-            e.preventDefault();
-            this.classList.add('drag-over');
-        }
-
-        function dragLeave() {
-            this.classList.remove('drag-over');
-        }
-
-        function drop() {
-            this.classList.remove('drag-over');
-            const draggedItem = document.querySelector('.dragging');
-            const fromIndex = parseInt(draggedItem.getAttribute('data-index'));
-            const toIndex = parseInt(this.getAttribute('data-index'));
-
-            // Swap items in the playerItems array
-            [playerItems[fromIndex], playerItems[toIndex]] = [playerItems[toIndex], playerItems[fromIndex]];
-
-            renderItems(playerItems.length, hiddenItems);
-        }
-
-        const setupDragAndDrop = () => {
-            const items = document.querySelectorAll('.item');
-            const boxes = document.querySelectorAll('.item-box');
-
-            items.forEach(item => {
-                item.addEventListener('dragstart', dragStart);
-                item.addEventListener('dragend', dragEnd);
-            });
-
-            boxes.forEach(box => {
-                box.addEventListener('dragover', dragOver);
-                box.addEventListener('dragenter', dragEnter);
-                box.addEventListener('dragleave', dragLeave);
-                box.addEventListener('drop', drop);
-            });
-        };
-
-        const renderItems = (itemQuantity, hiddenItemsColors) => {
-            givenItemsContainer.innerHTML = '';
-            hiddenItemsContainer.innerHTML = '';
-
-            for (let i = 0; i < itemQuantity; i++) {
-                const itemBox = createItemBox(i);
-                const playerItem = createItem(playerItems[i], i);
-                itemBox.appendChild(playerItem);
-                givenItemsContainer.appendChild(itemBox);
-
-                const hiddenItem = createItem(hiddenItemsColors[i], i);
-                hiddenItem.classList.add('hide'); 
-                hiddenItemsContainer.appendChild(hiddenItem);
-            }
-
-            setupDragAndDrop();
-            updateItemBoxVisibility();
-        };
-
-
-        
-        const shuffleArray = (array) => {
-            for (let i = array.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [array[i], array[j]] = [array[j], array[i]];
-            }
-            return array;
-        };
-
-        const startGame = () => {
-            const itemQuantity = parseInt(homeItemQuantity.textContent) || 3;
-
-            const randomColors = generateRandomColors(itemQuantity);
-
-            do {
-                playerItems = shuffleArray([...randomColors]);
-            } while (JSON.stringify(playerItems) === JSON.stringify(randomColors));
-
-            hiddenItems = [...randomColors];
-
-            checkCount = 0;
-            totalChecksMade.textContent = checkCount;
-
-            renderItems(itemQuantity, hiddenItems);
-
-            totalCorrectGuess.textContent = '0';
-            totalItems.textContent = itemQuantity;
-            
-            document.querySelector('.win-message').classList.add('remove');
-            document.querySelector('.lose-message').classList.add('remove');
-            
-            // Ensure items box is active at initial game start
-            isItemsBoxActive = true;
-            updateItemBoxVisibility();
-            itemsBoxCheckMark.classList.remove('hide');
-            itemsBoxButton.classList.add('items-box-active');
-            
-            // Hide the hidden items
-            const hiddenItemElements = hiddenItemsContainer.querySelectorAll('.item');
-            hiddenItemElements.forEach(item => item.classList.add('hide'));
-            
-            // Enable dragging and buttons
-            enableGameInteractions();
-        };
-
-        const modalItemQuantity = document.querySelector('.modal-item-quantity');
-
-        const playAgain = () => {
-            const itemQuantity = parseInt(modalItemQuantity.textContent) || 3;
-
-            const randomColors = generateRandomColors(itemQuantity);
-
-            do {
-                playerItems = shuffleArray([...randomColors]);
-            } while (JSON.stringify(playerItems) === JSON.stringify(randomColors));
-
-            hiddenItems = [...randomColors];
-
-            checkCount = 0;
-            totalChecksMade.textContent = checkCount;
-
-            renderItems(itemQuantity, hiddenItems);
-
-            totalCorrectGuess.textContent = '0';
-            totalItems.textContent = itemQuantity;
-            
-            document.querySelector('.win-message').classList.add('remove');
-            document.querySelector('.lose-message').classList.add('remove');
-            
-            updateItemBoxVisibility();
-            
-            const hiddenItemElements = hiddenItemsContainer.querySelectorAll('.item');
-            hiddenItemElements.forEach(item => item.classList.add('hide'));
-            
-            // Enable dragging and buttons
-            enableGameInteractions();
-        };
-
-        const freezeBoard = () => {
-            const items = document.querySelectorAll('.item');
-            items.forEach(item => {
-                item.setAttribute('draggable', false);
-                item.removeEventListener('dragstart', dragStart);
-                item.removeEventListener('dragend', dragEnd);
-            });
-
-            document.querySelector('.check-items-button').classList.add('remove');
-            document.querySelector('.play-again-button').classList.remove('remove');
-            document.querySelector('.give-up-button').disabled = true;
-        };
-
-        const enableGameInteractions = () => {
-            const items = document.querySelectorAll('.item');
-            items.forEach(item => {
-                item.setAttribute('draggable', true);
-                item.addEventListener('dragstart', dragStart);
-                item.addEventListener('dragend', dragEnd);
-            });
-
-            document.querySelector('.check-items-button').classList.remove('remove');
-            document.querySelector('.play-again-button').classList.add('remove');
-            document.querySelector('.give-up-button').disabled = false;
-        };
-
-
-        const itemsBoxButton = document.querySelector('.items-box-button')
-        const itemsBoxCheckMark = document.querySelector('.items-box-checkmark')
-        
-        let isItemsBoxActive = true; 
-
-        const toggleItemsBox = () => {
-            isItemsBoxActive = !isItemsBoxActive;
-            const itemsBoxButton = document.querySelector('.items-box-button');
-            const itemsBoxCheckMark = document.querySelector('.items-box-checkmark');
-            
-            itemsBoxButton.classList.toggle('items-box-active', isItemsBoxActive);
-            if (itemsBoxCheckMark) {
-                itemsBoxCheckMark.classList.toggle('hide', !isItemsBoxActive);
-            }
-
-            updateItemBoxVisibility();
-        };
-
-        const updateItemBoxVisibility = () => {
-            const itemBoxes = document.querySelectorAll('.item-box');
-            itemBoxes.forEach((box) => {
-                box.style.border = isItemsBoxActive ? '1px solid var(--blue)' : '1px solid transparent';
-            });
-        };
-
-        const checkItems = () => {
-            checkCount++;
-            totalChecksMade.textContent = checkCount;
-
-            let correctCount = 0;
-            playerItems.forEach((item, index) => {
-                if (item === hiddenItems[index]) {
-                    correctCount++;
-                }
-            });
-
-            totalCorrectGuess.textContent = correctCount;
-            guessContainer.classList.remove('hide');
-
-            if (correctCount === playerItems.length) {
-                showWinMessage();
-                freezeBoard();
-            }
-        };
-
-        const showWinMessage = () => {
-            statusModal.classList.remove('remove');
-            document.querySelector('.win-message').classList.remove('remove');
-            document.querySelector('.lose-message').classList.add('remove');
-            document.querySelector('.checkCount').textContent = checkCount;
-            
-            const hiddenItemElements = hiddenItemsContainer.querySelectorAll('.item');
-            hiddenItemElements.forEach(item => item.classList.remove('hide'));
-        };
-
-        const giveUp = () => {
-            statusModal.classList.remove('remove');
-            document.querySelector('.lose-message').classList.remove('remove');
-            document.querySelector('.win-message').classList.add('remove');
-            document.querySelector('.checkCount').textContent = checkCount;
-            
-            const hiddenItemElements = hiddenItemsContainer.querySelectorAll('.item');
-            hiddenItemElements.forEach(item => item.classList.remove('hide'));
-
-            let correctCount = 0;
-            playerItems.forEach((item, index) => {
-                if (item === hiddenItems[index]) {
-                    correctCount++;
-                }
-            });
-
-            totalCorrectGuess.textContent = correctCount;
-            guessContainer.classList.remove('hide');
-            
-            freezeBoard();
-        };
-
-        document.addEventListener('click', (event) => {
-            const button = event.target.closest('button');
-            if (!button) return;
-
-            switch (true) {
-                case button.classList.contains('play-game-button'):
-                    introductionContainer.classList.add('remove');
-                    gameContainer.classList.remove('remove');
-                    startGame();
-                    
-                    break;
-                case button.classList.contains('check-items-button'):
-                    checkItems();
-                    break;
-                case button.classList.contains('give-up-button'):
-                    giveUp();
-                    break;
-                case button.classList.contains('items-box-button'):
-                    toggleItemsBox();
-                    break;
-                case button.classList.contains('play-again-button'):
-                    statusModal.classList.add('remove');
-                    playAgain();
-                    break;
-                case button.classList.contains('home-item-decrease-button'):
-                    homeAdjustQuantity(-1);
-                    break;
-                case button.classList.contains('home-item-increase-button'):
-                    homeAdjustQuantity(1);
-                    break;
-                case button.classList.contains('modal-item-decrease-button'):
-                    modalAdjustQuantity(-1);
-                    break;
-                case button.classList.contains('modal-item-increase-button'):
-                    modalAdjustQuantity(1);
-                    break;
-                case button.classList.contains('spectate-button'):
-                    statusModal.classList.add('remove');
-                    break;
-            }
-        });
-
-        window.onclick = (event) => {
-            if (event.target == statusModal) {
-                statusModal.classList.add('remove');
-            }
-        };
         
     </script>
-    
+
+    <script src="cupMatch.js"></script>
 </body>
